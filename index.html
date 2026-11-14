@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#EEF1F4">
+<title>Leblon Guide</title>
+<!-- Neighbourhood guide for guests. Static page, no personal data. Language via ?l=en|pt|de. -->
+<style>
+:root{--bg:#F6F2EC;--card:#fff;--ink:#14202B;--mut:#5E6B76;--line:rgba(20,32,43,.09);--acc:#E0874A;--sea:#2C7DA0;--r:20px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 48px}
+header{position:relative;margin:0 -16px;padding:calc(env(safe-area-inset-top) + 18px) 20px 26px;background:linear-gradient(180deg,rgba(12,22,32,.38) 0%,rgba(12,22,32,.05) 38%,rgba(12,22,32,.72) 100%),url(fotos/kopf-sonnenuntergang.webp) center 24%/cover #1E5F7E;color:#fff;border-radius:0 0 28px 28px;min-height:320px;display:flex;flex-direction:column}
+header h1{margin-top:auto;padding-top:48px;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+header p{text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.kick{white-space:nowrap;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+h1{margin:26px 0 6px;font-size:32px;line-height:1.1;font-weight:650;letter-spacing:-.01em}
+header p{margin:0;opacity:.9;max-width:34ch}
+.lang{display:flex;gap:6px;padding:4px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.lang button{all:unset;display:flex;padding:3px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;opacity:.55;transition:opacity .2s,border-color .2s}
+.lang button[aria-pressed=true]{opacity:1;border-color:rgba(255,255,255,.95)}
+.lang i{display:block;width:34px;height:22px;border-radius:999px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.lang svg{display:block;width:100%;height:100%}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;margin:14px -16px 4px;padding:8px 16px;background:linear-gradient(var(--bg) 70%,rgba(246,242,236,0));scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;color:var(--ink);font-size:14px;font-weight:550;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+section{margin-top:22px;scroll-margin-top:64px}
+h2{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:20px;font-weight:650}
+h2 span{font-size:22px}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:inherit}
+.item b{display:block;font-size:16px;font-weight:620}
+.item small{display:block;color:var(--mut);font-size:14px;margin-top:2px}
+.item em{font-style:normal;font-size:12px;font-weight:600;color:var(--sea);text-transform:uppercase;letter-spacing:.06em}
+.item .go{margin-left:auto;align-self:center;flex:none;width:30px;height:30px;border-radius:999px;display:grid;place-items:center;background:#EEF4F7;color:var(--sea)}
+.item .go svg{width:16px;height:16px}
+.feat{display:block;padding:0;overflow:hidden}
+.feat .ph{position:relative;aspect-ratio:16/9;display:grid;place-items:center;font-size:44px;background:linear-gradient(135deg,#F3E3D3,#DCEAF1)}
+.feat .ph.slim{aspect-ratio:auto;height:72px;font-size:32px}
+.feat .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feat .nr{position:absolute;top:10px;left:10px;z-index:1;min-width:30px;height:30px;padding:0 9px;border-radius:999px;display:grid;place-items:center;background:rgba(20,32,43,.78);color:#fff;font-size:15px;font-weight:700}
+.feat .bd{display:flex;gap:12px;align-items:flex-start;padding:14px 16px 16px}
+.feat q{display:block;margin-top:10px;padding:10px 12px;border-radius:14px;background:#FFF6EE;border-left:3px solid var(--acc);font-size:14px;quotes:none;color:var(--ink)}
+.feat q::before{content:attr(data-h);display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:2px}
+.tip{padding:14px 16px;border-radius:var(--r);background:#FFF6EE;border:1px solid #F3DCC8;font-size:15px}
+.tip ul{margin:0;padding-left:1.1em}.tip li+li{margin-top:6px}
+.sos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sos a{display:flex;flex-direction:column;align-items:center;padding:14px 8px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:inherit;text-align:center}
+.sos a b{font-size:24px;font-weight:700;color:#C2412D}
+.sos a small{font-size:13px;color:var(--mut)}
+.ban{position:relative;height:150px;margin:0 0 12px;border-radius:var(--r);overflow:hidden;background:#DCEAF1}
+.ban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ban::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,32,0) 35%,rgba(12,22,32,.7))}
+.ban h2{position:absolute;left:16px;right:16px;bottom:12px;z-index:1;margin:0;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+footer{margin-top:30px;font-size:13px;color:var(--mut);text-align:center}
+.side,.content{display:contents}
+.next{display:none}
+/* Tablet und Computer: Menü links, rechts immer nur eine Kategorie */
+@media (min-width:768px){
+  .wrap{max-width:1200px;display:grid;grid-template-columns:280px minmax(0,1fr);gap:32px;align-items:start;padding:24px 24px 48px}
+  .side{display:block;position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto;scrollbar-width:none}
+  .content{display:block;min-width:0;padding-top:6px}
+  header{margin:0;padding:20px 20px 24px;border-radius:24px;min-height:340px}
+  .ban{height:280px;margin-bottom:20px;border-radius:24px}
+  .ban h2{left:24px;bottom:20px}
+  h1{margin-top:22px;font-size:28px}
+  nav{position:static;flex-direction:column;gap:6px;overflow:visible;margin:16px 0 0;padding:0;background:none}
+  nav a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;font-size:15px;transition:background .15s,color .15s}
+  nav a:hover{border-color:rgba(20,32,43,.22)}
+  nav a[aria-current=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+  section{display:none;margin-top:0}
+  section.on{display:block}
+  h2{font-size:28px;margin-bottom:18px}
+  h2 span{font-size:30px}
+  .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+  .item{transition:transform .15s,box-shadow .15s}
+  .item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(20,32,43,.08)}
+  .tip,.sos{max-width:640px}
+  .next{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:10px 16px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15px;font-weight:550}
+  .next svg{width:16px;height:16px;transform:rotate(45deg)}
+  footer{margin-top:36px;text-align:left}
+}
+/* ---------- v7 Helles Glas (Sebs Wahl 14.11.2026, Muster E) ---------- */
+:root{--bg:#EEF1F4;--card:rgba(255,255,255,.62);--ink:#1D232A;--mut:#5B6570;--line:rgba(255,255,255,.75);--acc:#C7772F;--r:24px;--glass:blur(24px) saturate(160%)}
+body::before{content:"";position:fixed;inset:-40px;z-index:-1;background:url(fotos/kopf-sonnenuntergang.webp) center 30%/cover;filter:blur(40px) saturate(1.1);opacity:.55;pointer-events:none}
+.ic{display:block;width:1em;height:1em;flex:none}
+header{margin:12px 0 0;padding:calc(env(safe-area-inset-top) + 18px) 18px 22px;border-radius:30px;min-height:330px;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,.48) 100%),url(fotos/kopf-sonnenuntergang.webp) center 24%/cover #1E5F7E}
+h1{font-weight:700;letter-spacing:-.02em}
+.lang{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.35);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+nav{margin:10px -16px 4px;padding:10px 16px;background:rgba(238,241,244,.45);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+nav a{display:flex;align-items:center;gap:8px;font-weight:600}
+nav a .ic{font-size:17px}
+nav a,.item,.sos a,.tip,.next{background:var(--card);border:1px solid var(--line);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);box-shadow:0 4px 24px rgba(30,40,60,.06)}
+h2 span{display:flex;font-size:22px}
+.ban{border-radius:24px}
+.ban::after{background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.45))}
+.ban h2{text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.item em{color:#7A8591;font-size:11px;letter-spacing:.08em}
+.item small{color:var(--mut)}
+.item .go{background:rgba(29,35,42,.06);color:var(--ink)}
+.feat .ph{background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(220,230,238,.6));color:#7A8591;font-size:34px}
+.feat .nr{background:rgba(255,255,255,.72);color:var(--ink);font-size:13px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.feat{position:relative}
+.feat .rk{position:absolute;top:14px;right:16px;font-size:13px;font-weight:650;color:#7A8591}
+.feat .nr{display:flex;align-items:center;justify-content:center}
+.feat .nr::before{content:"#"}
+.feat q{margin-top:8px;padding:0;border:0;border-radius:0;background:none;font-size:15px}
+.feat q::before{content:attr(data-h) ": ";display:inline;font-size:inherit;font-weight:650;letter-spacing:0;text-transform:none;color:var(--acc);margin:0}
+.tip{font-size:15px}
+.sos a b{color:#B5402E}
+@media (min-width:768px){
+  header{margin:0;border-radius:28px;min-height:340px}
+  nav{margin:16px 0 0;padding:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  nav a{gap:10px}
+  nav a:hover{border-color:#fff;background:rgba(255,255,255,.8)}
+  nav a[aria-current=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+  h2 span{font-size:28px}
+  .item:hover{box-shadow:0 10px 30px rgba(30,40,60,.10)}
+  .next .ic{width:16px;height:16px;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="side">
+    <header>
+      <div class="top"><div class="kick">Leblon · Rio</div><div class="lang" id="lang" role="group" aria-label="Language"></div></div>
+      <h1 id="h1"></h1>
+      <p id="sub"></p>
+    </header>
+    <nav id="nav"></nav>
+  </aside>
+  <div class="content">
+    <main id="main"></main>
+    <footer id="foot"></footer>
+  </div>
+</div>
+<script>
+// Inhalte dreisprachig. Orte ohne Hausnummer; Karten-Link sucht nach Name + Viertel. Keine Adresse der Wohnung.
+const FLAGS = {
+  en: '<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2.4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>',
+  pt: '<svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="60" height="40" fill="#009C3B"/><path d="M6 20L30 5.5 54 20 30 34.5z" fill="#FFDF00"/><circle cx="30" cy="20" r="9.2" fill="#002776"/><path d="M21.2 17.6Q30 15.4 38.9 22.4" stroke="#fff" stroke-width="1.7" fill="none"/></svg>',
+  de: '<svg viewBox="0 0 60 36" preserveAspectRatio="xMidYMid slice"><rect width="60" height="12" fill="#111"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg>'
+};
+const LANGS = ['en', 'pt', 'de'], NAMES = { en: 'English', pt: 'Português', de: 'Deutsch' };
+const UI = {
+  en: { h1: 'Your Leblon guide', sub: 'Our favourite places nearby – tap a place to open it in Maps.', map: 'Open in Maps', ours: 'Our tip', next: 'Next', foot: 'Have fun in Rio! Questions? Your Superhost is happy to help.' },
+  pt: { h1: 'Seu guia do Leblon', sub: 'Nossos lugares favoritos por perto – toque para abrir no mapa.', map: 'Abrir no mapa', ours: 'Nossa dica', next: 'Próximo', foot: 'Divirtam-se no Rio! Dúvidas? Seu Superhost está à disposição.' },
+  de: { h1: 'Euer Leblon-Guide', sub: 'Unsere Lieblingsorte in der Nähe – tippt auf einen Ort, um ihn in Maps zu öffnen.', map: 'In Maps öffnen', ours: 'Unser Tipp', next: 'Weiter', foot: 'Viel Spaß in Rio! Fragen? Euer Superhost hilft gern.' }
+};
+// Places per section. No opening hours on purpose.
+// u = fixed Maps link, otherwise Maps search for q. Featured sections: rank = position, img = optional photo, r = "Our tip".
+const SECTIONS = [
+  { id: 'eat', icon: '🍽️', feat: true, t: { en: 'Our restaurants', pt: 'Nossos restaurantes', de: 'Unsere Restaurants' }, items: [
+    { rank: 1, n: 'CT Boucherie', q: 'CT Boucherie Leblon', k: { en: 'Steakhouse', pt: 'Carnes', de: 'Steakhouse' }, d: { en: 'French-style steakhouse by the Troisgros family.', pt: 'Carnes à francesa da família Troisgros.', de: 'Steakhouse im französischen Stil, Familie Troisgros.' }, r: { en: 'Our number one: Brazil meets France – for us the best meat in Rio, and the side dishes keep coming to your table.', pt: 'Nosso número um: o Brasil encontra a França – para nós a melhor carne do Rio, e os acompanhamentos não param de chegar à mesa.', de: 'Unsere Nummer eins: Brasilien trifft Frankreich – für uns das beste Fleisch in Rio, und die Beilagen kommen immer wieder an den Tisch.' } },
+    { rank: 2, n: 'Chez Claude', q: 'Chez Claude Leblon Rio de Janeiro', k: { en: 'French bistro', pt: 'Bistrô francês', de: 'Französisches Bistro' }, d: { en: 'Claude Troisgros\' bistro on Rua Conde de Bernadotte.', pt: 'O bistrô do Claude Troisgros na Rua Conde de Bernadotte.', de: 'Das Bistro von Claude Troisgros in der Rua Conde de Bernadotte.' }, r: { en: 'Relaxed, warm and simply delicious – French cooking with a Brazilian touch.', pt: 'Descontraído, acolhedor e delicioso – cozinha francesa com toque brasileiro.', de: 'Entspannt, herzlich und einfach köstlich – französische Küche mit brasilianischem Touch.' } },
+    { rank: 3, n: 'Sushi Leblon', q: 'Sushi Leblon Rio de Janeiro', k: { en: 'Japanese', pt: 'Japonês', de: 'Japanisch' }, d: { en: 'Rio\'s sushi classic on Rua Dias Ferreira.', pt: 'O clássico do sushi na Rua Dias Ferreira.', de: 'Der Sushi-Klassiker in der Rua Dias Ferreira.' }, r: { en: 'The best sushi in the neighbourhood – book a table in advance.', pt: 'O melhor sushi do bairro – reservem a mesa antes.', de: 'Das beste Sushi im Viertel – unbedingt vorher reservieren.' } },
+    { rank: 4, n: 'Rainha', q: 'Rainha Leblon', u: 'https://www.google.com/maps/place/Rainha/@-22.9840359,-43.2273773,17z/data=!4m6!3m5!1s0x9bd541cb823ec3:0x9d3f4142393a4033!8m2!3d-22.9840359!4d-43.2273773', k: { en: 'Carioca kitchen', pt: 'Cozinha carioca', de: 'Carioca-Küche' }, d: { en: 'Lively spot on Rua Dias Ferreira.', pt: 'Casa animada na Rua Dias Ferreira.', de: 'Lebhaftes Lokal in der Rua Dias Ferreira.' }, r: { en: 'Great atmosphere for a long evening with friends.', pt: 'Ótimo clima para uma noite longa com amigos.', de: 'Tolle Stimmung für einen langen Abend mit Freunden.' } }
+  ] },
+  { id: 'breakfast', icon: '☕', feat: true, t: { en: 'Breakfast', pt: 'Café da manhã', de: 'Frühstück' }, items: [
+    { rank: 1, n: 'Talho Capixaba', q: 'Talho Capixaba Leblon', k: { en: 'Bakery & deli', pt: 'Padaria e empório', de: 'Bäckerei & Feinkost' }, d: { en: 'On Av. Ataulfo de Paiva, a few minutes\' walk.', pt: 'Na Av. Ataulfo de Paiva, a poucos minutos a pé.', de: 'An der Av. Ataulfo de Paiva, wenige Minuten zu Fuß.' }, r: { en: 'Fresh bread, good coffee – our easy everyday breakfast.', pt: 'Pão fresquinho, café bom – nosso café da manhã do dia a dia.', de: 'Frisches Brot, guter Kaffee – unser unkompliziertes Alltagsfrühstück.' } },
+    { rank: 2, n: 'Empório Jardim', q: 'Empório Jardim Ipanema Rua Maria Quitéria', k: { en: 'Café · Ipanema', pt: 'Café · Ipanema', de: 'Café · Ipanema' }, d: { en: 'Next door in Ipanema, breakfast all day.', pt: 'Pertinho, em Ipanema, café da manhã o dia todo.', de: 'Gleich nebenan in Ipanema, Frühstück den ganzen Tag.' }, r: { en: 'One of Rio\'s best breakfasts – come early, there is often a queue.', pt: 'Um dos melhores cafés da manhã do Rio – cheguem cedo, costuma ter fila.', de: 'Eines der besten Frühstücke in Rio – früh kommen, oft gibt es eine Schlange.' } }
+  ] },
+  { id: 'drink', icon: '🍹', t: { en: 'Bars & gelato', pt: 'Bares e gelato', de: 'Bars & Eis' }, items: [
+    { n: 'Jobi', q: 'Jobi Leblon', k: { en: 'Boteco', pt: 'Boteco', de: 'Boteco' }, d: { en: 'Legendary corner bar, chopp and snacks until late.', pt: 'Boteco lendário, chope e petiscos até tarde.', de: 'Legendäre Eckkneipe, Chopp und Snacks bis spät.' } },
+    { n: 'Bracarense', q: 'Bracarense Leblon', k: { en: 'Boteco', pt: 'Boteco', de: 'Boteco' }, d: { en: 'Famous for its bolinhos – very local.', pt: 'Famoso pelos bolinhos – bem carioca.', de: 'Berühmt für Bolinhos – sehr carioca.' } },
+    { n: 'Academia da Cachaça', q: 'Academia da Cachaça Leblon', k: { en: 'Cachaça', pt: 'Cachaça', de: 'Cachaça' }, d: { en: 'Hundreds of cachaças and the best caipirinhas.', pt: 'Centenas de cachaças e ótimas caipirinhas.', de: 'Hunderte Cachaças und beste Caipirinhas.' } },
+    { n: 'Momo Gelato', q: 'Momo Gelato Leblon', k: { en: 'Gelato', pt: 'Gelato', de: 'Eis' }, d: { en: 'Italian gelato, around 30 flavours.', pt: 'Gelato italiano, cerca de 30 sabores.', de: 'Italienisches Eis, rund 30 Sorten.' } }
+  ] },
+  { id: 'do', icon: '🌅', t: { en: 'Beach & sunset', pt: 'Praia e pôr do sol', de: 'Strand & Sonnenuntergang' }, items: [
+    { n: 'Praia do Leblon', q: 'Praia do Leblon', k: { en: 'Beach', pt: 'Praia', de: 'Strand' }, d: { en: 'Steps away. Posto 12 is calm and family-friendly.', pt: 'Pertinho. O Posto 12 é tranquilo e familiar.', de: 'Gleich um die Ecke. Posto 12 ist ruhig und familienfreundlich.' } },
+    { n: 'Mirante do Leblon', q: 'Mirante do Leblon', k: { en: 'Sunset', pt: 'Pôr do sol', de: 'Sonnenuntergang' }, d: { en: 'Deck at the end of the beach, view over Leblon and Ipanema.', pt: 'Deck no fim da praia, vista do Leblon e Ipanema.', de: 'Holzdeck am Strandende, Blick über Leblon und Ipanema.' } },
+    { n: 'Pedra do Arpoador', q: 'Pedra do Arpoador', k: { en: 'Sunset', pt: 'Pôr do sol', de: 'Sonnenuntergang' }, d: { en: 'Rio\'s classic sunset spot – people applaud.', pt: 'O pôr do sol clássico do Rio – com aplausos.', de: 'Der Sonnenuntergang von Rio – mit Applaus.' } }
+  ] },
+  { id: 'explore', icon: '🚲', t: { en: 'Explore', pt: 'Passeios', de: 'Erleben' }, items: [
+    { n: 'Lagoa Rodrigo de Freitas', q: 'Lagoa Rodrigo de Freitas', k: { en: 'Walk & bike', pt: 'Caminhada e bike', de: 'Laufen & Rad' }, d: { en: 'Flat 7.5 km loop around the lagoon, bikes to rent.', pt: 'Volta plana de 7,5 km na lagoa, bikes para alugar.', de: 'Flache Runde um die Lagune (7,5 km), Räder zum Leihen.' } },
+    { n: 'Jardim Botânico', q: 'Jardim Botânico Rio de Janeiro', k: { en: 'Garden', pt: 'Jardim', de: 'Garten' }, d: { en: 'Royal palms and shade, 10 minutes by car.', pt: 'Palmeiras imperiais e sombra, 10 min de carro.', de: 'Königspalmen und Schatten, 10 Minuten mit dem Auto.' } },
+    { n: 'Morro Dois Irmãos', q: 'Trilha Morro Dois Irmãos Vidigal', k: { en: 'Hike', pt: 'Trilha', de: 'Wanderung' }, d: { en: 'Best view over Leblon. Start in Vidigal – local guide and sturdy shoes.', pt: 'Melhor vista do Leblon. Saída no Vidigal – guia local e tênis firme.', de: 'Bester Blick über Leblon. Start im Vidigal – mit lokalem Guide und festen Schuhen.' } },
+    { n: 'Feira Hippie de Ipanema', q: 'Feira Hippie de Ipanema', k: { en: 'Sunday market', pt: 'Feira de domingo', de: 'Sonntagsmarkt' }, d: { en: 'Crafts and art, Sundays at Praça General Osório.', pt: 'Artesanato e arte, domingos na Praça General Osório.', de: 'Kunsthandwerk, sonntags an der Praça General Osório.' } }
+  ] },
+  { id: 'need', icon: '🛒', t: { en: 'Everyday', pt: 'Dia a dia', de: 'Alltag' }, items: [
+    { n: 'Zona Sul', q: 'Supermercado Zona Sul Leblon', k: { en: 'Supermarket', pt: 'Supermercado', de: 'Supermarkt' }, d: { en: 'Well-stocked supermarket in the neighbourhood.', pt: 'Supermercado completo no bairro.', de: 'Gut sortierter Supermarkt im Viertel.' } },
+    { n: 'Drogaria', q: 'farmácia 24 horas Leblon', k: { en: 'Pharmacy', pt: 'Farmácia', de: 'Apotheke' }, d: { en: 'Pharmacies along Av. Ataulfo de Paiva.', pt: 'Farmácias na Av. Ataulfo de Paiva.', de: 'Apotheken entlang der Av. Ataulfo de Paiva.' } },
+    { n: 'Metrô Antero de Quental', q: 'Estação Antero de Quental metrô', k: { en: 'Metro line 4', pt: 'Metrô linha 4', de: 'Metro Linie 4' }, d: { en: 'Fast to Ipanema, Copacabana and downtown.', pt: 'Rápido para Ipanema, Copacabana e Centro.', de: 'Schnell nach Ipanema, Copacabana und ins Zentrum.' } },
+    { n: 'DEAT', q: 'DEAT Delegacia Especial de Apoio ao Turismo Leblon', k: { en: 'Tourist police', pt: 'Polícia do turista', de: 'Touristenpolizei' }, d: { en: 'Help for visitors if something gets lost or stolen.', pt: 'Ajuda ao turista em caso de perda ou roubo.', de: 'Hilft Reisenden bei Verlust oder Diebstahl.' } }
+  ] }
+];
+const TIPS = {
+  t: { en: 'Good to know', pt: 'Bom saber', de: 'Gut zu wissen' }, icon: '💡',
+  l: {
+    en: ['Take only what you need to the beach – phone and cash in a small bag.', 'Use Uber or 99 at night instead of hailing a car.', 'Sun is strong all year: sunscreen, hat, water.'],
+    pt: ['Levem só o necessário à praia – celular e dinheiro numa bolsinha.', 'À noite, prefiram Uber ou 99.', 'O sol é forte o ano todo: protetor, chapéu, água.'],
+    de: ['Nehmt an den Strand nur das Nötigste mit – Handy und Bargeld in einer kleinen Tasche.', 'Nachts lieber Uber oder 99 statt Taxi vom Straßenrand.', 'Die Sonne ist das ganze Jahr stark: Sonnencreme, Hut, Wasser.']
+  }
+};
+const SOS = { t: { en: 'Emergency', pt: 'Emergência', de: 'Notfall' }, icon: '🆘', n: [
+  ['190', { en: 'Police', pt: 'Polícia', de: 'Polizei' }], ['192', { en: 'Ambulance', pt: 'SAMU', de: 'Rettung' }], ['193', { en: 'Fire', pt: 'Bombeiros', de: 'Feuerwehr' }]
+] };
+const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+// Linien-Icons statt Emojis, Farbe folgt dem Text.
+const ICO = {
+  eat: '<path d="M7 3v8m-3-8v5a3 3 0 0 0 6 0V3M7 11v10M17 3c-2 2-3 5-3 8h3v10"/>',
+  breakfast: '<path d="M4 10h13v4a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6zM17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3m4-3v3"/>',
+  drink: '<path d="M5 4h14l-7 8zM12 12v8M8 20h8"/>',
+  do: '<path d="M12 18a6 6 0 0 0 0-12M3 18h18M12 3v1m7.8 3.2-.7.7M21 13h-1"/>',
+  explore: '<circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8M9 9l3 8M14 6h2"/>',
+  need: '<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',
+  tips: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',
+  sos: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'
+};
+const ico = id => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICO[id] || ''}</svg>`;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const maps = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+
+// Section photos (decorative). Sections without an entry get a plain heading.
+const BAN = { eat: 'fotos/calcadao.webp', do: 'fotos/palmen.webp' };
+const head = (id, icon, t) => { const h = `<h2><span>${ico(id)}</span>${esc(t)}</h2>`; return BAN[id] ? `<div class="ban"><img src="${BAN[id]}" alt="" loading="lazy">${h}</div>` : h; };
+
+function pick() {
+  const u = new URLSearchParams(location.search).get('l');
+  if (LANGS.includes(u)) return u;
+  const n = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  return LANGS.includes(n) ? n : 'en';
+}
+let L = pick();
+function render() {
+  const U = UI[L];
+  document.documentElement.lang = L === 'pt' ? 'pt-BR' : L;
+  document.getElementById('h1').textContent = U.h1;
+  document.getElementById('sub').textContent = U.sub;
+  document.getElementById('foot').textContent = U.foot;
+  document.getElementById('lang').innerHTML = LANGS.map(l => `<button type="button" data-l="${l}" aria-label="${NAMES[l]}" aria-pressed="${l === L}"><i>${FLAGS[l]}</i></button>`).join('');
+  const all = ALL();
+  const nxt = id => { const k = all.findIndex(s => s.id === id), n = all[k + 1]; return n ? `<a class="next" href="#${n.id}" data-go="${n.id}">${esc(U.next)}: ${ico(n.id)} ${esc(n.t[L])} ${ARROW}</a>` : ''; };
+  document.getElementById('nav').innerHTML = all.map(s => `<a href="#${s.id}" data-go="${s.id}">${ico(s.id)}<span>${esc(s.t[L])}</span></a>`).join('');
+  document.getElementById('main').innerHTML = SECTIONS.map(s => `<section id="${s.id}">${head(s.id, s.icon, s.t[L])}<div class="list">${
+    s.items.map(i => s.feat
+      ? `<a class="item feat" href="${esc(i.u || maps(i.q))}" target="_blank" rel="noopener" aria-label="${esc(i.n)} – ${esc(U.map)}">${i.img ? `<div class="ph"><span class="nr">${i.rank}</span><img src="${esc(i.img)}" alt="" loading="lazy" onerror="this.remove()"></div>` : `<span class="rk">#${i.rank}</span>`}<div class="bd"><div><em>${esc(i.k[L])}</em><b>${esc(i.n)}</b><small>${esc(i.d[L])}</small>${i.r ? `<q data-h="${esc(U.ours)}">${esc(i.r[L])}</q>` : ''}</div><span class="go">${ARROW}</span></div></a>`
+      : `<a class="item" href="${esc(i.u || maps(i.q))}" target="_blank" rel="noopener" aria-label="${esc(i.n)} – ${esc(U.map)}"><div><em>${esc(i.k[L])}</em><b>${esc(i.n)}</b><small>${esc(i.d[L])}</small></div><span class="go">${ARROW}</span></a>`).join('')
+  }</div>${nxt(s.id)}</section>`).join('')
+    + `<section id="tips">${head('tips', TIPS.icon, TIPS.t[L])}<div class="tip"><ul>${TIPS.l[L].map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>${nxt('tips')}</section>`
+    + `<section id="sos"><h2><span>${ico('sos')}</span>${esc(SOS.t[L])}</h2><div class="sos">${SOS.n.map(([nr, t]) => `<a href="tel:${nr}"><b>${nr}</b><small>${esc(t[L])}</small></a>`).join('')}</div></section>`;
+  show();
+}
+// Ab 768 px: Menü links, rechts nur die gewählte Kategorie. Darunter: alles untereinander wie bisher.
+const ALL = () => [...SECTIONS, { id: 'tips', icon: TIPS.icon, t: TIPS.t }, { id: 'sos', icon: SOS.icon, t: SOS.t }];
+const WIDE = matchMedia('(min-width: 768px)');
+let cur = location.hash.slice(1);
+function show() {
+  const ids = ALL().map(s => s.id);
+  if (!ids.includes(cur)) cur = ids[0];
+  document.querySelectorAll('#main section').forEach(s => s.classList.toggle('on', s.id === cur));
+  document.querySelectorAll('#nav a').forEach(a => WIDE.matches && a.dataset.go === cur ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-go]'); if (!a || !WIDE.matches) return;
+  e.preventDefault();
+  cur = a.dataset.go; show();
+  history.replaceState(null, '', location.search + '#' + cur);
+  window.scrollTo(0, 0);
+});
+WIDE.addEventListener('change', show);
+document.getElementById('lang').addEventListener('click', e => {
+  const b = e.target.closest('[data-l]'); if (!b) return;
+  L = b.dataset.l; render();
+  const p = new URLSearchParams(location.search); p.set('l', L); history.replaceState(null, '', '?' + p + location.hash);
+});
+render();
+</script>
+</body>
+</html>
