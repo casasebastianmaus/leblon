@@ -226,9 +226,9 @@ const ico = id => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="curre
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const maps = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
 
-// Section photos (decorative). Sections without an entry get a plain heading.
-const BAN = { eat: 'fotos/calcadao.webp', do: 'fotos/palmen.webp' };
-const head = (id, icon, t) => { const h = `<h2><span>${ico(id)}</span>${esc(t)}</h2>`; return BAN[id] ? `<div class="ban"><img src="${BAN[id]}" alt="" loading="lazy">${h}</div>` : h; };
+// Section photos (decorative): every section gets one, alternating between the two photos.
+const BAN = ['fotos/calcadao.webp', 'fotos/palmen.webp'];
+const head = (id, icon, t) => { const k = ALL().findIndex(s => s.id === id); return `<div class="ban"><img src="${BAN[Math.max(k, 0) % BAN.length]}" alt="" loading="lazy"><h2><span>${ico(id)}</span>${esc(t)}</h2></div>`; };
 
 function pick() {
   const u = new URLSearchParams(location.search).get('l');
@@ -253,7 +253,7 @@ function render() {
       : `<a class="item" href="${esc(i.u || maps(i.q))}" target="_blank" rel="noopener" aria-label="${esc(i.n)} – ${esc(U.map)}"><div><em>${esc(i.k[L])}</em><b>${esc(i.n)}</b><small>${esc(i.d[L])}</small>${DIST[i.n] ? `<span class="dist">~${DIST[i.n].slice(1)} ${DIST[i.n][0] === 'w' ? U.walk : U.taxi}</span>` : ''}</div><span class="go">${ARROW}</span></a>`).join('')
   }</div>${nxt(s.id)}</section>`).join('')
     + `<section id="tips">${head('tips', TIPS.icon, TIPS.t[L])}<div class="tip"><ul>${TIPS.l[L].map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>${nxt('tips')}</section>`
-    + `<section id="sos"><h2><span>${ico('sos')}</span>${esc(SOS.t[L])}</h2><div class="sos">${SOS.n.map(([nr, t]) => `<a href="tel:${nr}"><b>${nr}</b><small>${esc(t[L])}</small></a>`).join('')}</div></section>`;
+    + `<section id="sos">${head('sos', SOS.icon, SOS.t[L])}<div class="sos">${SOS.n.map(([nr, t]) => `<a href="tel:${nr}"><b>${nr}</b><small>${esc(t[L])}</small></a>`).join('')}</div></section>`;
   show();
 }
 // Ab 768 px: Menü links, rechts nur die gewählte Kategorie. Darunter: alles untereinander wie bisher.
