@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F6F2EC">
+<title>Privacy Policy · Leblon Guide</title>
+<!-- Privacy policy for the apartment's private Google OAuth client (Home Assistant calendar). Static page, no personal data. Language via ?l=en|de. -->
+<style>
+:root{--bg:#F6F2EC;--card:#fff;--ink:#14202B;--mut:#5E6B76;--line:rgba(20,32,43,.09);--acc:#E0874A;--sea:#2C7DA0;--r:20px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 20px) 16px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.kick{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.lang{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.lang a{text-decoration:none;color:var(--mut);font-size:13px;font-weight:600;padding:4px 12px;border-radius:999px}
+.lang a[aria-current]{background:var(--ink);color:#fff}
+h1{margin:26px 0 6px;font-size:30px;line-height:1.15;font-weight:650;letter-spacing:-.01em}
+.sub{margin:0;color:var(--mut)}
+.card{margin-top:16px;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+h2{margin:0 0 6px;font-size:17px;font-weight:650}
+p{margin:0}
+p+p,ul+p{margin-top:8px}
+ul{margin:6px 0 0;padding-left:20px}
+li+li{margin-top:4px}
+a{color:var(--sea)}
+.back{display:inline-block;margin-top:24px;font-weight:600;text-decoration:none}
+footer{margin-top:28px;font-size:13px;color:var(--mut)}
+[data-l]{display:none}
+html:not(.de) [data-l=en],html.de [data-l=de]{display:block}
+</style>
+<script>
+// Sprache vor dem ersten Zeichnen setzen: ?l=de zeigt Deutsch, sonst Englisch.
+if (new URLSearchParams(location.search).get('l') === 'de') document.documentElement.classList.add('de');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="kick">Leblon · Rio</span>
+    <nav class="lang" aria-label="Language">
+      <a href="?l=en" id="len">EN</a>
+      <a href="?l=de" id="lde">DE</a>
+    </nav>
+  </div>
+
+  <main data-l="en" lang="en">
+    <h1>Privacy Policy</h1>
+    <p class="sub">Home Assistant calendar connection of a private holiday apartment in Leblon. Effective 21 November 2026.</p>
+
+    <div class="card">
+      <h2>What this app is</h2>
+      <p>The app is the Google sign-in client of the apartment's own Home Assistant system. Only the apartment owner signs in with it. It is not offered to guests or to the public.</p>
+    </div>
+
+    <div class="card">
+      <h2>What Google data it uses</h2>
+      <p>The app asks for access to Google Calendar only. Home Assistant uses it to:</p>
+      <ul>
+        <li>write the apartment's reservation entries into the owner's Google Calendar (first name of the guest, arrival and departure, number of guests, booking channel);</li>
+        <li>read and update those entries so the calendar stays in step with the bookings;</li>
+        <li>show the owner's own calendar events inside the owner's private Home Assistant.</li>
+      </ul>
+      <p>No other Google data (such as e-mail, contacts or files) is requested or used.</p>
+    </div>
+
+    <div class="card">
+      <h2>Where the data stays</h2>
+      <p>The data stays in the owner's Home Assistant system and in the owner's Google account. It is not sold, not shared with third parties, not used for advertising and not used to train AI models.</p>
+    </div>
+
+    <div class="card">
+      <h2>Google API Services User Data Policy</h2>
+      <p>The use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    </div>
+
+    <div class="card">
+      <h2>Retention and removal</h2>
+      <p>Reservation entries are kept as long as they are needed to run the apartment. Access can be revoked at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>; Home Assistant then stops reading and writing the calendar.</p>
+    </div>
+
+    <div class="card">
+      <h2>Guests</h2>
+      <p>Guests do not sign in with Google. If you are a guest and have a question about your data, please use the contact in your booking confirmation.</p>
+    </div>
+
+    <a class="back" href="./?l=en">← Leblon Guide</a>
+  </main>
+
+  <main data-l="de" lang="de">
+    <h1>Datenschutzerklärung</h1>
+    <p class="sub">Kalender-Anbindung von Home Assistant für eine private Ferienwohnung in Leblon. Gültig ab 21. November 2026.</p>
+
+    <div class="card">
+      <h2>Was diese App ist</h2>
+      <p>Die App ist der Google-Anmeldezugang des wohnungseigenen Home-Assistant-Systems. Nur der Eigentümer der Wohnung meldet sich damit an. Sie wird weder Gästen noch der Öffentlichkeit angeboten.</p>
+    </div>
+
+    <div class="card">
+      <h2>Welche Google-Daten sie nutzt</h2>
+      <p>Die App fragt nur Zugriff auf Google Kalender an. Home Assistant nutzt ihn, um:</p>
+      <ul>
+        <li>die Reservierungen der Wohnung in den Google Kalender des Eigentümers einzutragen (Vorname des Gastes, An- und Abreise, Zahl der Gäste, Buchungskanal);</li>
+        <li>diese Einträge zu lesen und zu aktualisieren, damit der Kalender zu den Buchungen passt;</li>
+        <li>die eigenen Kalendertermine des Eigentümers in seinem privaten Home Assistant anzuzeigen.</li>
+      </ul>
+      <p>Andere Google-Daten (etwa E-Mail, Kontakte oder Dateien) werden weder angefragt noch genutzt.</p>
+    </div>
+
+    <div class="card">
+      <h2>Wo die Daten bleiben</h2>
+      <p>Die Daten bleiben im Home-Assistant-System und im Google-Konto des Eigentümers. Sie werden nicht verkauft, nicht an Dritte weitergegeben, nicht für Werbung und nicht zum Training von KI-Modellen genutzt.</p>
+    </div>
+
+    <div class="card">
+      <h2>Google API Services User Data Policy</h2>
+      <p>Nutzung und Weitergabe von Informationen aus Google-APIs richten sich nach der <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, einschließlich der Limited-Use-Anforderungen.</p>
+    </div>
+
+    <div class="card">
+      <h2>Speicherdauer und Widerruf</h2>
+      <p>Reservierungseinträge bleiben, solange sie für den Betrieb der Wohnung gebraucht werden. Der Zugriff lässt sich jederzeit unter <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> widerrufen; Home Assistant liest und schreibt den Kalender dann nicht mehr.</p>
+    </div>
+
+    <div class="card">
+      <h2>Gäste</h2>
+      <p>Gäste melden sich nicht bei Google an. Bei Fragen zu Ihren Daten nutzen Sie bitte den Kontakt aus Ihrer Buchungsbestätigung.</p>
+    </div>
+
+    <a class="back" href="./?l=de">← Leblon Guide</a>
+  </main>
+
+  <footer>Leblon Guide</footer>
+</div>
+<script>
+document.getElementById(document.documentElement.classList.contains('de') ? 'lde' : 'len').setAttribute('aria-current', 'true');
+</script>
+</body>
+</html>
